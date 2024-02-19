@@ -1,0 +1,30 @@
+﻿@model proiectDAW.Models.Photo
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editare video</h2>
+<br />
+
+
+@using (Html.BeginForm(controllerName: "Photos", actionName: "Edit",
+   method: FormMethod.Post, routeValues: new { id = Model.Id }))
+
+{
+    @Html.Label("URL", "Continut foto")
+
+    <br />
+
+    @Html.Editor("URL", new { @class = "form-control" })
+    <br />
+
+    @Html.ValidationMessage("URL", null, new { @class = "text-danger" })
+
+    <br />
+    <br />
+
+    <button class="buton_cautare button1" type="submit">Editeaza fotografia</button>
+
+}

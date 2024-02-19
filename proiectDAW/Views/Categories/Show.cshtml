@@ -1,0 +1,93 @@
+﻿@model proiectDAW.Models.Category
+
+
+<div class="row">
+    <div class="card">
+    <div class="card-body">
+    <div class="col-12" style="color:  rgb(170, 51, 106); font-family: 'Helvetica', sans-serif;">
+            <h2 style="font-family:Algerian!important">
+                @Model.CategoryName</h2>
+        <p class="card-text" name="Descriere">@Model.Description</p>
+        <p class="card-text" name="NrBookmark">Numarul de bookmark-uri salvate este: @Model.NrBookmarks</p>
+            <small class="text-muted"> Creat de:  @Model.User.UserName</small>
+
+        <br />
+        <br />
+        <br /><br />
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+    @if (ViewBag.UserCurent == Model.UserId)
+    {
+        <a class="buton_editare button3" href="/Categories/Edit/@Model.Id">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+            </svg>Editare Categorie
+        </a>
+
+
+
+        <form method="post" action="/Categories/Delete/@Model.Id">
+            <button type="submit" class="buton_stergere button2" style="border:none" onclick="return confirm('Sunteti sigur ca doriti sa stergeti categoria?')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                </svg>Stergere categorie
+            </button>
+        </form>
+        <br />
+    }
+    </div>
+
+</div>
+</div>
+
+    <div class="container">
+        <div class="row justify-content-around">
+            @if (Model.BookmarkCategories.Count > 0)
+            {
+                <p></p>
+                <div style="color: rgb(170, 51, 106); font-family: 'Bookman Old Style', sans-serif; font-size: 20px; font-weight: bold;"> Bookmark-uri in categorie:</div>
+                <p></p>
+                <p> </p>
+
+                @foreach (var bmkcat in Model.BookmarkCategories)
+                {
+                    <div class="card mb-4" style="width: 18rem;">
+                        <div class="card-body" style="color: rgb(170, 51, 106); font-family: 'Helvetica', sans-serif;">
+                            <h2 style="font-family: Algerian!important">@bmkcat.Bookmark.Title</h2>
+                            <br />
+                            <div class="card mb-5 image-container" style="max-width: 25rem; max-height: 25rem">
+                                <img class="card-img-top" src="@bmkcat.Bookmark.Photo_Cover" alt="Card image cap">
+                            </div>
+                            <br />
+                            <p class="card-text" style="color: rgb(112, 17, 61)"> @bmkcat.Bookmark.Description</p>
+                            <p class="text-muted"> Creat de: @bmkcat.Bookmark.User.UserName</p>
+                            <small class="text-muted"> Data: @bmkcat.Bookmark.Date</small>
+                        </div>
+                        <br />
+                        <div class="d-flex flex-row justify-content-around">
+                            <a href="/Bookmarks/Show/@bmkcat.Bookmark.Id" class="buton_cautare button1">Afisare Bookmark</a>
+                            @if (ViewBag.UserCurent == Model.UserId)
+                            {
+                                <form method="post" action="/Categories/RemoveBookmark/?CategoryId=@bmkcat.CategoryId&BookmarkId=@bmkcat.BookmarkId">
+                                    <button type="submit" class="buton_stergere button2" onclick="return confirm('Sunteti sigur ca doriti sa scoateti bookmark-ul din categorie?')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                                        </svg>Scoate bookmark-ul
+                                    </button>
+                                </form>
+                            }
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                }
+            }
+            else
+            {
+                <div>Nu exista bookmark-uri salvate in aceasta categorie!</div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,172 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.buton_cautare {
+    background-color: rgb(170, 51, 106);
+    box-shadow: 0 11px 15px rgba(0, 0, 0, 0.1) !important;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white;
+    color: rgb(115, 15, 105);
+    border: 2px solid rgb(170, 51, 106);
+}
+
+    .button1:hover {
+        background-color: rgb(170, 51, 106);
+        color: white;
+    }
+
+.buton_editare {
+    background-color: blue;
+    box-shadow: 0 11px 15px rgba(0, 0, 0, 0.1) !important;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button3 {
+    background-color: white;
+    color: blue;
+    border: 2px;
+}
+
+    .button3:hover {
+        background-color: blue;
+        color: white;
+    }
+
+.buton_stergere {
+    background-color: red;
+    box-shadow: 0 11px 15px rgba(0, 0, 0, 0.1) !important;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button2 {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+}
+
+    .button2:hover {
+        background-color: red;
+        color: white;
+    }
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    color: rgb(170, 51, 106);
+    font-family: 'Times New Roman', Times, serif;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+    .search-input:focus {
+        border-color: rgb(170, 51, 106);
+    }
+
+.pagination {
+    display: flex;
+    list-style: none;
+}
+
+.page-item {
+    margin-right: 5px;
+}
+
+.page-link {
+    color: rgb(115, 15, 105);
+}
+
+.image-container {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .image-container:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 8px rgb(170, 51, 106);
+    }
+
+nav a {
+    color: rgb(115, 15, 105);
+    text-decoration: none;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1) !important;
+    padding: 8px 16px;
+    margin: 0 8px;
+    border-radius: 4px;
+    transition: color 0.3s ease;
+}
+
+    nav a:hover {
+        color: rgb(130, 24, 113) !important;
+    }
+
+.navbar-toggleable-sm {
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1) !important;
+}
+
+.register-link {
+    color: blue !important;
+}
+
+.login-link {
+    color: green !important;
+}
+
+.custom-select {
+    width: 350px;
+}
+
+.pagina_curenta {
+    background-color: rgb(115, 15, 105) !important;
+    color: white !important;
+}

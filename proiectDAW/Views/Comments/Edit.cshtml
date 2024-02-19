@@ -1,0 +1,30 @@
+﻿@model proiectDAW.Models.Comment
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editare comentariu</h2>
+<br />
+
+
+@using (Html.BeginForm(controllerName: "Comments", actionName: "Edit",
+    method: FormMethod.Post, routeValues: new { id = Model.Id }))
+
+{
+    @Html.Label("Text", "Continut comentariu")
+
+    <br />
+
+    @Html.Editor("Text", new { @class = "form-control" })
+    <br />
+
+    @Html.ValidationMessage("Text", null, new { @class = "text-danger" })
+
+    <br />
+    <br />
+
+    <button class="buton_cautare button1" type="submit">Editeaza comentariul</button>
+
+}

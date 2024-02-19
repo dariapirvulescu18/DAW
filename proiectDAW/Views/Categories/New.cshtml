@@ -1,0 +1,27 @@
+﻿@using (Html.BeginForm(actionName: "New", controllerName: "Categories"))
+{
+    @model proiectDAW.Models.Category
+
+    <h2 class="text-center mt-5">Adaugare categorie</h2>
+    <br />
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 offset-3">
+
+                @Html.LabelFor(m => m.CategoryName, "Nume categorie")
+                <br />
+                @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CategoryName, null, new { @class = "text-danger" })
+                <br />
+
+                @Html.LabelFor(m => m.Description, "Descrierea categoriei")
+                <br />
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
+                <br />
+
+                <button class="buton_cautare button1" type="submit">Adauga categorie</button>
+            </div>
+        </div>
+    </div>
+}
